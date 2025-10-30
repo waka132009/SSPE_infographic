@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quasar Spin & Luminosity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FAFC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <main class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C] mb-4">The Spin-Regulated Quasar</h1>
+            <p class="text-xl text-[#346A8D]">A New Mechanism for Super-Eddington Luminosities</p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">The Quasar Conundrum</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 text-center">
+                Astrophysics faces two major questions regarding supermassive black holes: How do quasars sustain luminosities that exceed their theoretical "Eddington Limit" ($L > L_{Edd}$)? And why do observed black hole spins appear to "max out" just below the theoretical maximum ($a_* = 1$), even with continuous accretion?
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center">
+                    <h3 class="text-2xl font-semibold text-[#346A8D] mb-2">The Luminosity Problem</h3>
+                    <p class="text-5xl font-bold text-[#003F5C] mb-2">L > L<sub>Edd</sub></p>
+                    <p class="text-gray-600">Many observed quasars are brighter than the Eddington limit, which theoretically should blow away accreting gas.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">The Spin Ceiling Problem</h3>
+                    <div class="chart-container">
+                        <canvas id="spinDonutChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 text-center mt-4">Standard accretion theory predicts a spin limit of $a_* \approx 0.998$ due to radiation. A new model proposes an additional self-regulating mechanism to enforce a sub-unity ceiling.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">A Proposed Solution: Self-Sustained Penrose Excitation</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 text-center">
+                A new model suggests a "Self-Sustained Penrose Excitation" process. Active at high spin rates and high accretion rates, this mechanism operates at the boundary of the ergoregion (where spacetime is dragged) and the inner edge of the accretion disk (ISCO).
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold text-[#346A8D] mb-6 text-center">How It Works: A Spin-Regulated Feedback Loop</h3>
+                <p class="text-gray-600 text-center mb-6">
+                    This mechanism acts as a "lever" that taps into the black hole's rotational energy to power the disk's luminosity, creating a self-sustaining and self-limiting cycle.
+                </p>
+                <div class="flex flex-col items-center">
+                    <div class="flex flex-col md:flex-row flex-wrap items-center justify-center text-center">
+                        <div class="bg-[#B9D7EE] text-[#003F5C] p-4 rounded-lg shadow-sm m-2 max-w-[200px]">
+                            <span class="font-bold">1. High Accretion</span>
+                            <p class="text-sm">Gas flows in at super-Eddington rates.</p>
+                        </div>
+                        <span class="text-4xl text-[#346A8D] mx-2 hidden md:block">&#8594;</span>
+                        <span class="text-4xl text-[#346A8D] my-2 md:hidden">&#8595;</span>
+
+                        <div class="bg-[#B9D7EE] text-[#003F5C] p-4 rounded-lg shadow-sm m-2 max-w-[200px]">
+                            <span class="font-bold">2. Penrose Excitation</span>
+                            <p class="text-sm">At the ISCO-ergoregion boundary, disk energy taps into BH spin energy.</p>
+                        </div>
+                        <span class="text-4xl text-[#346A8D] mx-2 hidden md:block">&#8594;</span>
+                        <span class="text-4xl text-[#346A8D] my-2 md:hidden">&#8595;</span>
+
+                        <div class="bg-[#B9D7EE] text-[#003F5C] p-4 rounded-lg shadow-sm m-2 max-w-[200px]">
+                            <span class="font-bold">3. Sustained L > L<sub>Edd</sub></span>
+                            <p class="text-sm">The extracted spin energy powers the disk, sustaining super-Eddington luminosity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-center mt-4 md:mt-0 md:ml-[-100px]">
+                        <span class="text-4xl text-[#346A8D] transform -scale-x-100 rotate-90 md:rotate-0">&#8634;</span>
+                        <div class="bg-[#739BBD] text-white p-4 rounded-lg shadow-sm m-2 max-w-[400px] text-center">
+                            <span class="font-bold">4. Spin Regulation (Feedback)</span>
+                            <p class="text-sm">This energy extraction creates a counter-torque, slowing the black hole and enforcing a "spin ceiling," which in turn regulates the excitation process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">Key Observational Signatures (The "Hooks")</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 text-center">
+                This model is not just theoretical; it makes three specific, testable predictions ("hooks") that should co-occur in high-spin, high-accretion quasars.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">Hook 1: High-Energy Shoulder</h3>
+                    <div class="chart-container">
+                        <canvas id="spectrumLineChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 text-center mt-4">The model predicts a "shoulder" or bump in the X-ray spectrum between 20-120 keV, rather than a simple, featureless continuum drop-off.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">Hook 2: Lag Hardening</h3>
+                    <div class="chart-container">
+                        <canvas id="lagBarChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 text-center mt-4">Instead of X-rays heating the disk and causing a UV/optical "echo" (positive lag), this model predicts "lag hardening" (negative lag), where X-ray variations *follow* UV/optical changes.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-center">
+                    <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">Hook 3: X-Ray Polarization</h3>
+                    <div class="text-center">
+                        <p class="text-6xl mb-4">&#10138;</p>
+                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Equator-Aligned</p>
+                        <p class="text-gray-600 mb-4">X-ray polarization should be aligned with the disk's equator.</p>
+                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Rising Degree &#8599;</p>
+                        <p class="text-gray-600">The degree of polarization is expected to rise with energy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4 text-center">The Path to Falsification</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 text-center">
+                The model provides a clear path to be proven false. If vetted high-spin, high-accretion quasars (excluding cases with heavy absorption or extreme inclination) fail to show at least two of these three hooks, the scenario would be refuted.
+            </p>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-lg mx-auto">
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-center">
+                        <span class="text-3xl text-green-500 mr-4">&#10003;</span>
+                        <div>
+                            <span class="font-semibold">VETTED:</span> At least 2 hooks (e.g., Hook 1 + Hook 3) are observed.
+                        </div>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-3xl text-red-500 mr-4">&#10007;</span>
+                        <div>
+                            <span class="font-semibold">REFUTED:</span> 1 hook or 0 hooks are observed in a valid target.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-4 text-gray-500 text-sm">
+        Infographic based on "Self-Sustained Penrose Excitation of Accretion Disks" by J. Wakabayashi.
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const palette = {
+                darkBlue: '#003F5C',
+                mediumDarkBlue: '#346A8D',
+                mediumLightBlue: '#739BBD',
+                lightBlue: '#B9D7EE',
+                white: '#FFFFFF'
+            };
+
+            const processLabel = (label) => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + ' ' + word).trim().length > 16) {
+                            lines.push(currentLine.trim());
+                            currentLine = word;
+                        } else {
+                            currentLine = (currentLine + ' ' + word).trim();
+                        }
+                    }
+                    if (currentLine) {
+                        lines.push(currentLine.trim());
+                    }
+                    return lines;
+                }
+                return label;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const commonTooltipOptions = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+
+            const initSpinDonutChart = () => {
+                const ctx = document.getElementById('spinDonutChart');
+                if (!ctx) return;
+                
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Observed Max Spin (a* ≈ 0.998)', 'Gap to Unity'],
+                        datasets: [{
+                            data: [0.998, 0.002],
+                            backgroundColor: [palette.mediumDarkBlue, palette.lightBlue],
+                            hoverBackgroundColor: [palette.darkBlue, palette.mediumLightBlue],
+                            borderColor: palette.white,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            const initSpectrumLineChart = () => {
+                const ctx = document.getElementById('spectrumLineChart');
+                if (!ctx) return;
+                
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1', '10', '20', '50', '100', '120', '200'],
+                        datasets: [
+                            {
+                                label: 'Standard Continuum',
+                                data: [100, 50, 20, 10, 5, 4, 2],
+                                borderColor: palette.lightBlue,
+                                backgroundColor: 'transparent',
+                                tension: 0.1,
+                                borderDash: [5, 5]
+                            },
+                            {
+                                label: 'This Model (w/ Shoulder)',
+                                data: [100, 50, 25, 40, 35, 30, 10],
+                                borderColor: palette.mediumDarkBlue,
+                                backgroundColor: 'transparent',
+                                tension: 0.1,
+                                borderWidth: 3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Energy (keV)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Relative Flux'
+                                },
+                                type: 'logarithmic'
+                            }
+                        },
+                        ...commonTooltipOptions
+                    }
+                });
+            };
+            
+            const initLagBarChart = () => {
+                const ctx = document.getElementById('lagBarChart');
+                if (!ctx) return;
+                
+                const processedLabel = processLabel('X-ray vs UV/Optical Lag');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [processedLabel],
+                        datasets: [
+                            {
+                                label: 'Standard Reprocessing (Echo)',
+                                data: [5],
+                                backgroundColor: palette.lightBlue,
+                            },
+                            {
+                                label: 'This Model (Hardening)',
+                                data: [-2],
+                                backgroundColor: palette.mediumDarkBlue,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Time Lag (arb. units)'
+                                },
+                                beginAtZero: true
+                            }
+                        },
+                        ...commonTooltipOptions
+                    }
+                });
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                initSpinDonutChart();
+                initSpectrumLineChart();
+                initLagBarChart();
+            });
+
+        })();
+    </script>
+</body>
+</html>
