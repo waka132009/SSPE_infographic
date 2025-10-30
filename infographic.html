@@ -67,6 +67,18 @@
 
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-2xl font-semibold text-[#346A8D] mb-6 text-center">How It Works: A Spin-Regulated Feedback Loop</h3>
+                
+                <div class="text-center my-6 p-4 bg-gray-50 rounded-lg max-w-md mx-auto">
+                    <p class="text-lg text-gray-800 font-mono">
+                        P<sub class="text-sm">ext</sub> = P<sub class="text-sm">eq</sub> + P<sub class="text-sm">BZ</sub> + P<sub class="text-sm">res</sub>
+                    </p>
+                    <p class="text-sm text-gray-600">Total extracted power is the sum of equatorial, BZ, and residual power.</p>
+                    <p class="text-lg text-gray-800 font-mono mt-2">
+                        f<sub class="text-sm">eq</sub> + f<sub class="text-sm">BZ</sub> + f<sub class="text-sm">res</sub> = 1
+                    </p>
+                    <p class="text-sm text-gray-600">The fractional contributions sum to unity.</p>
+                </div>
+
                 <p class="text-gray-600 text-center mb-6">
                     This mechanism acts as a "lever" that taps into the black hole's rotational energy to power the disk's luminosity, creating a self-sustaining and self-limiting cycle.
                 </p>
@@ -116,25 +128,25 @@
                     <div class="chart-container">
                         <canvas id="spectrumLineChart"></canvas>
                     </div>
-                    <p class="text-gray-600 text-center mt-4">The model predicts a "shoulder" or bump in the X-ray spectrum between 20-120 keV, rather than a simple, featureless continuum drop-off.</p>
+                    <p class="text-gray-600 text-center mt-4">Predicts a 20–120 keV shoulder. This is a quantitative hook: requires a statistical preference of <strong class="text-gray-800">ΔBIC (shoulder vs cutoff-PL) ≥ 6</strong> over a simple continuum.</p>
                 </div>
 
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">Hook 2: Lag Hardening</h3>
                     <div class="chart-container">
-                        <canvas id="lagBarChart"></canvas>
+                        <canvas id="lagTrendChart"></canvas>
                     </div>
-                    <p class="text-gray-600 text-center mt-4">Instead of X-rays heating the disk and causing a UV/optical "echo" (positive lag), this model predicts "lag hardening" (negative lag), where X-ray variations *follow* UV/optical changes.</p>
+                    <p class="text-gray-600 text-center mt-4">Predicts lag hardening: an energy-dependent trend where lags increase with energy (<strong class="text-gray-800">d lag/d log E > 0</strong>) across X-ray bands, rather than a simple reprocessing echo.</p>
                 </div>
 
                 <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-center">
                     <h3 class="text-2xl font-semibold text-[#346A8D] mb-4 text-center">Hook 3: X-Ray Polarization</h3>
                     <div class="text-center">
                         <p class="text-6xl mb-4">&#10138;</p>
-                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Equator-Aligned</p>
-                        <p class="text-gray-600 mb-4">X-ray polarization should be aligned with the disk's equator.</p>
-                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Rising Degree &#8599;</p>
-                        <p class="text-gray-600">The degree of polarization is expected to rise with energy.</p>
+                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Angle ≈ Equatorial (±15°)</p>
+                        <p class="text-gray-600 mb-4">X-ray polarization angle must be consistent with the equatorial plane, within approx. ±15°.</p>
+                        <p class="text-2xl font-semibold text-[#003F5C] mb-2">Rising Degree (Trend)</p>
+                        <p class="text-gray-600">The degree of polarization should show a rising trend with energy (trend-level detection).</p>
                     </div>
                 </div>
             </div>
@@ -145,28 +157,24 @@
             <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 text-center">
                 The model provides a clear path to be proven false. If vetted high-spin, high-accretion quasars (excluding cases with heavy absorption or extreme inclination) fail to show at least two of these three hooks, the scenario would be refuted.
             </p>
-            <div class="bg-white rounded-lg shadow-md p-8 max-w-lg mx-auto">
-                <ul class="space-y-4 text-lg">
-                    <li class="flex items-center">
-                        <span class="text-3xl text-green-500 mr-4">&#10003;</span>
-                        <div>
-                            <span class="font-semibold">VETTED:</span> At least 2 hooks (e.g., Hook 1 + Hook 3) are observed.
-                        </div>
-                    </li>
-                    <li class="flex items-center">
-                        <span class="text-3xl text-red-500 mr-4">&#10007;</span>
-                        <div>
-                            <span class="font-semibold">REFUTED:</span> 1 hook or 0 hooks are observed in a valid target.
-                        </div>
-                    </li>
-                </ul>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+                <h4 class="text-xl font-semibold text-[#003F5C] mb-3">Vetted Sample Criteria</h4>
+                <p class="text-gray-600 mb-6">
+                    Targets must be vetted high-spin, high-accretion quasars. Exclude cases that are strongly absorbed or viewed at extreme inclination.
+                </p>
+                
+                <h4 class="text-xl font-semibold text-[#003F5C] mb-3">Falsification Condition</h4>
+                <p class="text-gray-600">
+                    The model is <strong class="text-red-600">refuted</strong> if <strong class="text-red-600">2 or more hooks</strong> (out of the 3) fail to appear across the vetted sample.
+                </p>
             </div>
         </section>
 
     </main>
 
-    <footer class="text-center p-4 text-gray-500 text-sm">
-        Infographic based on "Self-Sustained Penrose Excitation of Accretion Disks" by J. Wakabayashi.
+    <footer class="text-center p-6 text-gray-500 text-xs">
+        <p>© 2025 J. Wakabayashi, CC BY 4.0 | v1.0 (2025-10-30) | OSF DOI: 10.17605/OSF.IO/Q7DTH</p>
+        <p class="mt-1">Infographic based on "Self-Sustained Penrose Excitation of Accretion Disks" by J. Wakabayashi.</p>
     </footer>
 
     <script>
@@ -305,26 +313,30 @@
                 });
             };
             
-            const initLagBarChart = () => {
-                const ctx = document.getElementById('lagBarChart');
+            const initLagTrendChart = () => {
+                const ctx = document.getElementById('lagTrendChart');
                 if (!ctx) return;
-                
-                const processedLabel = processLabel('X-ray vs UV/Optical Lag');
 
                 new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
-                        labels: [processedLabel],
+                        labels: ['1-3 keV', '3-5 keV', '5-10 keV'],
                         datasets: [
                             {
-                                label: 'Standard Reprocessing (Echo)',
-                                data: [5],
-                                backgroundColor: palette.lightBlue,
+                                label: 'Standard Reprocessing',
+                                data: [5, 4.8, 4.5],
+                                borderColor: palette.lightBlue,
+                                backgroundColor: 'transparent',
+                                tension: 0.1,
+                                borderDash: [5, 5]
                             },
                             {
-                                label: 'This Model (Hardening)',
-                                data: [-2],
-                                backgroundColor: palette.mediumDarkBlue,
+                                label: 'This Model (d lag/d log E > 0)',
+                                data: [2, 3.5, 6],
+                                borderColor: palette.mediumDarkBlue,
+                                backgroundColor: 'transparent',
+                                tension: 0.1,
+                                borderWidth: 3
                             }
                         ]
                     },
@@ -332,12 +344,17 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Energy Band (log E)'
+                                }
+                            },
                             y: {
                                 title: {
                                     display: true,
                                     text: 'Time Lag (arb. units)'
-                                },
-                                beginAtZero: true
+                                }
                             }
                         },
                         ...commonTooltipOptions
@@ -348,10 +365,11 @@
             document.addEventListener('DOMContentLoaded', () => {
                 initSpinDonutChart();
                 initSpectrumLineChart();
-                initLagBarChart();
+                initLagTrendChart();
             });
 
         })();
     </script>
 </body>
 </html>
+
